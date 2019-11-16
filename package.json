@@ -1,0 +1,63 @@
+{
+    "name": "gopls-debug",
+    "description": "Go Language Server Client for testing",
+    "author": "The Go authors",
+    "license": "See LICENSE in LICENSE",
+    "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/stamblerre/gopls"
+    },
+    "publisher": "stamblerre",
+    "engines": {
+        "vscode": "^1.30.0"
+    },
+    "activationEvents": [
+        "onLanguage:go",
+        "workspaceContains:**/*.go"
+    ],
+    "main": "./out/extension",
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile",
+        "lint": "node ./node_modules/tslint/bin/tslint --project tsconfig.json",
+        "fix-lint": "node ./node_modules/tslint/bin/tslint --fix --project tsconfig.json"
+    },
+    "extensionDependencies": [],
+    "dependencies": {
+        "vscode-languageclient": "~6.0.0-next.6"
+    },
+    "devDependencies": {
+        "@types/mocha": "^5.2.7",
+        "@types/node": "^12.12.8",
+        "tslint": "^5.20.1",
+        "typescript": "^3.7.2",
+        "@types/vscode": "^1.40.0"
+    },
+    "contributes": {
+        "configuration": {
+            "title": "gopls-debug",
+            "properties": {
+                "flags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "-rpc.trace"
+                    ],
+                    "description": "Flags to pass to gopls",
+                    "scope": "resource"
+                },
+                "command": {
+                    "type": "string",
+                    "default": "gopls",
+                    "description": "Name of the gopls binary",
+                    "scope": "resource"
+                }
+            }
+        }
+    }
+}
