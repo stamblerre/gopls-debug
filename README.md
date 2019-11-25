@@ -2,16 +2,10 @@
 
 [![Build Status](https://dev.azure.com/stamblerre/gopls-debug/_apis/build/status/stamblerre.gopls-debug?branchName=master)](https://dev.azure.com/stamblerre/gopls-debug/_build/latest?definitionId=4&branchName=master)
 
-A VS Code extension for Go that uses only gopls, the Go language server
+A VS Code extension for Go that uses only gopls, the Go language server.
 
-The code for this extension comes from
-a combination of 
-https://github.com/Microsoft/vscode-extension-samples/blob/master/lsp-sample
-and https://github.com/Microsoft/vscode-go. 
+The code for this extension comes from the [https://golang.org/x/tools](https://github.com/golang/tools/tree/master/cmd/gopls/integration/vscode) repository.
 
 ## Installation
 
-To package the extension, run `vsce package` from this directory. To install
-the extension, navigate to the "Extensions" panel in VSCode, and select
-"Install from VSIX..." from the menu in the top right corner. Choose the 
-`gopls-1.0.0.vsix file` and reload VSCode.
+This extension can be found in the [VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=stamblerre.gopls-debug).
