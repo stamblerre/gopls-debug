@@ -23,7 +23,8 @@
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile",
         "lint": "node ./node_modules/tslint/bin/tslint --project tsconfig.json",
-        "fix-lint": "node ./node_modules/tslint/bin/tslint --fix --project tsconfig.json"
+        "fix-lint": "node ./node_modules/tslint/bin/tslint --fix --project tsconfig.json",
+        "deploy": "vsce publish --yarn"
     },
     "extensionDependencies": [],
     "dependencies": {
@@ -34,7 +35,8 @@
         "@types/node": "^12.12.12",
         "@types/vscode": "1.38.0",
         "tslint": "^5.20.1",
-        "typescript": "^3.7.x"
+        "typescript": "^3.7.x",
+        "vsce": "^1.69.0"
     },
     "contributes": {
         "commands": [
