@@ -13,12 +13,26 @@ export async function activate(ctx: vscode.ExtensionContext): Promise<void> {
   const document = vscode.window.activeTextEditor.document;
   const config = vscode.workspace.getConfiguration('gopls-debug', document.uri);
   const goplsCommand: string = config['command'];
+  if (!goplsCommand) {
+    const out = vscode.window.createOutputChannel('gopls-debug');
+    out.appendLine('No gopls command specified.')
+    return null;
+  }
   const goplsFlags: string[] = config['flags'];
   const serverOptions:
     lsp.ServerOptions = { command: getBinPath(goplsCommand), args: goplsFlags };
   const clientOptions: lsp.LanguageClientOptions = {
     initializationOptions: {},
-    documentSelector: ['go'],
+    documentSelector: [
+      {
+        language: 'go',
+        scheme: 'file',
+      },
+      {
+        language: 'go',
+        scheme: 'untitled',
+      }
+    ],
     uriConverters: {
       code2Protocol: (uri: vscode.Uri): string =>
         (uri.scheme ? uri : uri.with({ scheme: 'file' })).toString(),
@@ -39,7 +53,7 @@ export async function activate(ctx: vscode.ExtensionContext): Promise<void> {
   let disposable = c.start();
   ctx.subscriptions.push(disposable);
 
-  ctx.subscriptions.push(vscode.commands.registerCommand('go.languageserver.restart', async () => {
+  ctx.subscriptions.push(vscode.commands.registerCommand('gopls.restart', async () => {
 		c.diagnostics.clear();
 		await c.stop();
     disposable.dispose();
@@ -61,10 +75,8 @@ function getBinPath(toolName: string): string {
 
 function findToolIn(
   toolName: string, envVar: string, appendBinToPath: boolean): string {
-  console.log(toolName);
   let value = process.env[envVar];
   if (value) {
-    console.log(value);
     let paths = value.split(path.delimiter);
     for (let i = 0; i < paths.length; i++) {
       let binpath = path.join(paths[i], appendBinToPath ? 'bin' : '', toolName);

@@ -37,10 +37,16 @@
         "@types/vscode": "^1.40.0"
     },
     "contributes": {
+        "commands": [
+            {
+                "command": "gopls.restart",
+                "title": "gopls-debug: restart gopls",
+                "description": "Restart the currently running instance of gopls."
+            }
+        ],
         "configuration": {
-            "title": "gopls-debug",
             "properties": {
-                "flags": {
+                "gopls-debug.flags": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -51,7 +57,7 @@
                     "description": "Flags to pass to gopls",
                     "scope": "resource"
                 },
-                "command": {
+                "gopls-debug.command": {
                     "type": "string",
                     "default": "gopls",
                     "description": "Name of the gopls binary",
