@@ -1,4 +1,4 @@
-# gopls
+# gopls-debug
 A VS Code extension for Go that uses only gopls, the Go language server
 
 The code for this extension comes from
