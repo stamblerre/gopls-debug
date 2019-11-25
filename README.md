@@ -1,7 +1,8 @@
 # gopls-debug
-A VS Code extension for Go that uses only gopls, the Go language server
 
 [![Build Status](https://dev.azure.com/stamblerre/gopls-debug/_apis/build/status/stamblerre.gopls-debug?branchName=master)](https://dev.azure.com/stamblerre/gopls-debug/_build/latest?definitionId=4&branchName=master)
+
+A VS Code extension for Go that uses only gopls, the Go language server
 
 The code for this extension comes from
 a combination of 
