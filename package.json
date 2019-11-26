@@ -28,12 +28,12 @@
     },
     "extensionDependencies": [],
     "dependencies": {
-        "vscode-languageclient": "^6.0.0-next.6"
+        "vscode-languageclient": "^6.0.0-next.7"
     },
     "devDependencies": {
         "@types/mocha": "^5.2.7",
         "@types/node": "^12.12.12",
-        "@types/vscode": "1.38.0",
+        "@types/vscode": "1.40.0",
         "tslint": "^5.20.1",
         "typescript": "^3.7.x",
         "vsce": "^1.69.0"
