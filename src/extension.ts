@@ -38,7 +38,17 @@ export async function activate(ctx: vscode.ExtensionContext): Promise<void> {
         (uri.scheme ? uri : uri.with({ scheme: 'file' })).toString(),
       protocol2Code: (uri: string) => vscode.Uri.parse(uri),
     },
-    revealOutputChannelOn: lsp.RevealOutputChannelOn.Error,
+    // This becomes really spammy if you show errors from all requests.
+    revealOutputChannelOn: lsp.RevealOutputChannelOn.Never,
+    middleware: {
+      workspace: {
+        // TODO(rstambler): Implementing this will probably allow us to propagate
+        // the gopls configurations as we want.
+        configuration: function(params: lsp.ConfigurationParams, token: lsp.CancellationToken, next: lsp.RequestHandler<lsp.ConfigurationParams, any[], void>): lsp.HandlerResult<any[], void> {
+          return next(params, token);
+        }
+      },
+    }
   };
   const c = new lsp.LanguageClient('gopls', serverOptions, clientOptions);
 
