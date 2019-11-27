@@ -22,9 +22,10 @@
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile",
+        "test": "",
         "lint": "node ./node_modules/tslint/bin/tslint --project tsconfig.json",
         "fix-lint": "node ./node_modules/tslint/bin/tslint --fix --project tsconfig.json",
-        "deploy": "vsce publish --yarn"
+        "deploy-minor": "vsce publish minor"
     },
     "extensionDependencies": [],
     "dependencies": {
