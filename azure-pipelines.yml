@@ -24,6 +24,9 @@ steps:
   displayName: 'Install Node.js'
 
 - script: npm install
+- script: |
+    git config user.email "rstambler@golang.org"
+    git config user.name "Rebecca Stambler"
 
 - bash: |
     /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
