@@ -26,8 +26,8 @@ steps:
 # install dependencies
 - script: npm install
 
-# install vsce
-- script: npm install vsce --save-dev
+# install vsce globally
+- script: npm install -g vsce
 
 # set git config
 # TODO(rstambler): set this in secret variables
