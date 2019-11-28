@@ -24,8 +24,7 @@
         "pretest": "npm run compile",
         "test": "",
         "lint": "node ./node_modules/tslint/bin/tslint --project tsconfig.json",
-        "fix-lint": "node ./node_modules/tslint/bin/tslint --fix --project tsconfig.json",
-        "deploy-minor": "vsce publish minor"
+        "fix-lint": "node ./node_modules/tslint/bin/tslint --fix --project tsconfig.json"
     },
     "extensionDependencies": [],
     "dependencies": {
