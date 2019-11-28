@@ -23,7 +23,14 @@ steps:
     versionSpec: '8.x'
   displayName: 'Install Node.js'
 
+# install dependencies
 - script: npm install
+
+# install vsce
+- script: npm install vsce --save-dev
+
+# set git config
+# TODO(rstambler): set this in secret variables
 - script: |
     git config user.email "rstambler@golang.org"
     git config user.name "Rebecca Stambler"
